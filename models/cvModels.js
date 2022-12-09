@@ -8,7 +8,7 @@ export async function getAllCVs() {
 
 export async function createCV({ first_name, surname, title, email, phone_number, education, experience }) {
     const result = await query(
-      `INSERT INTO cv_database (question_author, question_title, room_number, problem_summary, tried_input, code, error_logs)
+      `INSERT INTO cv_database (first_name, surname, title, email, phone_number, education, experience)
     VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING * `,
       [first_name, surname, title, email, phone_number, education, experience]
     );
@@ -27,7 +27,7 @@ export async function getCVById(id) {
 export async function updateCVById(id, { first_name, surname, title, email, phone_number, education, experience }) {
   const result = await query(
     `UPDATE cv_database
-    SET question_author = $1, question_title = $2, room_number = $3, problem_summary = $4, tried_input = $5, code = $6, error_logs = $7
+    SET first_name = $1, surname = $2, title = $3, email = $4, phone_number = $5, education = $6, experience = $7
     WHERE id = $8
     RETURNING *`, [first_name, surname, title, email, phone_number, education, experience], id) 
   const updatedCV = result.rows[0];
