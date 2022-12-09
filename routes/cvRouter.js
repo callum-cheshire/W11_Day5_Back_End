@@ -26,7 +26,7 @@ cvRouter.patch("/:id", async function (req, res) {
 });
 
 cvRouter.delete("/:id", async function (req, res) {
-  const result = await deleteCvById(req.params.id);
+  const result = await deleteCVById(req.params.id);
   res.json({ success: true, payload: result });
 });
 
